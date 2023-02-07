@@ -1,0 +1,27 @@
+GET http://localhost:3001/
+
+### 
+//Scenario 1 search by name
+GET http://localhost:3001/products/?search=dell
+###
+
+//Scenario 2 search by name and brand
+GET http://localhost:3001/products/?brand=realme
+###
+//Scenario 3 search by price range from min to max and also can filter using limit and order 
+
+GET http://localhost:3001/products/?priceMin=1000&priceMax=50000
+###
+
+//Scenario 4 search by color and name
+
+GET http://localhost:3001/products/?color=black&search=dell
+###
+
+//Scenario 5 search by name and rating
+
+GET http://localhost:3001/products/?rating=4.3&search=hp
+###
+
+//search by query paramters
+GET http://localhost:3001/products/?rating=4.6&brand=hp
