@@ -1,14 +1,15 @@
 const express = require("express");
 const { open } = require("sqlite");
-const sqlite3 = require("sqlite3");
+const sqlite3 = require("sqlite3").verbose();
 const path = require("path");
 const cors = require('cors')
 const databasePath = path.join(__dirname, "ecommerce.db");
-
+const port = process.env.PORT || 3001;
 const app = express();
 
+app.use(cors({origin:true}))
 app.use(express.json());
-app.use(cors())
+
 let db = null;
 
 const initializeDbAndServer = async () => {
@@ -18,8 +19,8 @@ const initializeDbAndServer = async () => {
       driver: sqlite3.Database,
     });
 
-    app.listen(3001, () =>
-      console.log("Server Running at http://localhost:3001/")
+    app.listen(port, () =>
+      console.log(`Server Running at ${port}`)
     );
   } catch (error) {
     console.log(`DB Error: ${error.message}`);
